@@ -259,20 +259,28 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
   text-align:center;
 }
 
+/* Flex rather than grid so a leftover row centers instead of
+   hanging off to the left when the logo count changes. */
 .client-grid{
   list-style:none;
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:2.6rem 2rem;
-  max-width:880px;
-  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
   align-items:center;
+  gap:2.8rem 2rem;
+  max-width:1020px;
+  margin:0 auto;
 }
 
 .client-grid li{
+  flex:0 0 calc(20% - 1.6rem);
   display:flex;
   align-items:center;
   justify-content:center;
+}
+
+@media (max-width: 900px){
+  .client-grid li{ flex-basis:calc(33.333% - 1.4rem); }
 }
 
 .client-grid img{
@@ -294,10 +302,11 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
 }
 
 @media (max-width: 560px){
-  .client-grid{ grid-template-columns:repeat(2, 1fr); gap:2.4rem 1.6rem; }
+  .client-grid{ gap:2.4rem 1.6rem; }
+  .client-grid li{ flex-basis:calc(50% - 0.8rem); }
 }
 
-/* ---------- Quote / cinematic band ---------- */
+/* ---------- Skyline band + call to action ---------- */
 
 .band{
   position:relative;
@@ -323,34 +332,24 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
   z-index:-1;
 }
 
-.band blockquote{
-  font-family:var(--sans);
-  font-style:normal;
-  font-weight:300;
-  font-size:clamp(1.25rem, 2.4vw, 1.7rem);
-  letter-spacing:.02em;
-  max-width:30ch;
-  line-height:1.55;
+.band-inner{
   padding:0 6vw;
-  opacity:.8;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2.2rem;
+}
+
+.band h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(1.8rem, 4vw, 2.8rem);
+  line-height:1.15;
+  opacity:.9;
   text-shadow:0 2px 4px rgba(0,0,0,.85), 0 6px 24px rgba(0,0,0,.7);
 }
 
-/* ---------- CTA ---------- */
-
-.cta{
-  padding:6.5rem 6vw;
-  text-align:center;
-  background:var(--ink);
-  color:var(--paper);
-}
-
-.cta h2{
-  font-family:var(--serif);
-  font-weight:400;
-  font-size:clamp(1.8rem,4vw,2.6rem);
-  margin-bottom:2rem;
-}
+/* ---------- CTA button ---------- */
 
 .btn{
   display:inline-block;
