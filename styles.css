@@ -384,6 +384,23 @@ footer{
 footer a{ color:rgba(246,242,234,.75); }
 footer a:hover{ color:var(--gold); }
 
+.social{
+  display:flex;
+  align-items:center;
+  gap:1.5rem;
+}
+
+.social a{ display:flex; }
+
+.social svg{
+  width:17px;
+  height:17px;
+  fill:rgba(246,242,234,.55);
+  transition:fill .2s ease;
+}
+
+.social a:hover svg{ fill:var(--gold); }
+
 /* ---------- Contact page ---------- */
 
 .page-head{
