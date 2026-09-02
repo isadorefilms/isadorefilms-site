@@ -247,12 +247,19 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
 
 .band{
   position:relative;
-  min-height:60vh;
+  /* Matches the skyline photo's native 1161x871 ratio so the full frame shows, uncropped */
+  aspect-ratio:1161 / 871;
+  width:100%;
+  max-width:100%;
+  min-height:400px;
+  max-height:88vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  background-size:cover;
-  background-position:center 30%;
+  background-color:var(--ink);
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
   color:var(--paper);
   text-align:center;
   isolation:isolate;
