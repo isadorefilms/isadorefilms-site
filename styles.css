@@ -152,7 +152,7 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
 .hero h1{
   font-family:var(--serif);
   font-weight:400;
-  font-size:clamp(2.4rem, 6vw, 4.6rem);
+  font-size:clamp(1.2rem, 3vw, 2.3rem);
   line-height:1.05;
   opacity:.8;
   text-shadow:0 2px 4px rgba(0,0,0,.85), 0 6px 24px rgba(0,0,0,.7);
