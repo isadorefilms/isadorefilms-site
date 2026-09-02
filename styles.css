@@ -247,18 +247,15 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
 
 .band{
   position:relative;
-  /* Matches the skyline photo's native 1161x871 ratio so the full frame shows, uncropped */
+  /* Box takes the photo's own 1161x871 ratio, so "cover" fills edge to edge
+     without cropping and without letterbox bars — full width, whole image. */
   aspect-ratio:1161 / 871;
   width:100%;
-  max-width:100%;
-  min-height:400px;
-  max-height:88vh;
+  min-height:340px;
   display:flex;
   align-items:center;
   justify-content:center;
-  background-color:var(--ink);
-  background-size:contain;
-  background-repeat:no-repeat;
+  background-size:cover;
   background-position:center;
   color:var(--paper);
   text-align:center;
