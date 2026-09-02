@@ -243,6 +243,60 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
 
 .tenet b{ font-weight:600; }
 
+/* ---------- Clients ---------- */
+
+.clients{
+  padding:1rem 6vw 6rem;
+  background:var(--paper);
+}
+
+.clients .kicker{
+  font-size:.78rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#8a8371;
+  margin-bottom:3rem;
+  text-align:center;
+}
+
+.client-grid{
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:2.6rem 2rem;
+  max-width:880px;
+  margin:0 auto;
+  align-items:center;
+}
+
+.client-grid li{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.client-grid img{
+  max-width:100%;
+  height:auto;
+  opacity:.5;
+  transition:opacity .25s ease;
+}
+
+.client-grid img:hover{ opacity:.95; }
+
+.client-note{
+  max-width:1000px;
+  margin:3rem auto 0;
+  text-align:center;
+  font-size:.68rem;
+  letter-spacing:.06em;
+  color:#a09a8b;
+}
+
+@media (max-width: 560px){
+  .client-grid{ grid-template-columns:repeat(2, 1fr); gap:2.4rem 1.6rem; }
+}
+
 /* ---------- Quote / cinematic band ---------- */
 
 .band{
