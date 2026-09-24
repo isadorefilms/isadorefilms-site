@@ -15,13 +15,13 @@
 <header class="site-header">
   <nav class="primary">
     <ul>
-      <li><a href="./" class="active">Home</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#top" class="active">Home</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<section class="hero" style="background-image:url('images/beach.jpg');">
+<section class="hero" id="top" style="background-image:url('images/beach.jpg');">
   <div class="hero-inner">
     <p class="hero-logo"><span class="word">Isadore <b>Films</b></span></p>
     <h1><span class="accent">is about</span> the story.</h1>
@@ -47,28 +47,39 @@
   </div>
 </section>
 
-<section class="clients">
-  <p class="kicker">Selected clients</p>
-  <ul class="client-grid">
-    <li><img src="images/logos/warner-bros.png" alt="Warner Bros." loading="lazy"></li>
-    <li><img src="images/logos/netflix.png" alt="Netflix" loading="lazy"></li>
-    <li><img src="images/logos/hbo-max.png" alt="HBO Max" loading="lazy"></li>
-    <li><img src="images/logos/paramount.png" alt="Paramount" loading="lazy"></li>
-    <li><img src="images/logos/amazon-studios.png" alt="Amazon Studios" loading="lazy"></li>
-    <li><img src="images/logos/apple-tv.png" alt="Apple TV+" loading="lazy"></li>
-    <li><img src="images/logos/nbcuniversal.png" alt="NBCUniversal" loading="lazy"></li>
-    <li><img src="images/logos/peacock.png" alt="Peacock" loading="lazy"></li>
-    <li><img src="images/logos/cmt.png" alt="CMT" loading="lazy"></li>
-    <li><img src="images/logos/anonymous-content.png" alt="Anonymous Content" loading="lazy"></li>
-  </ul>
-  <p class="client-note">All trademarks are the property of their respective owners.</p>
-</section>
-
 <section class="band" style="background-image:url('images/skyline.jpg');">
   <div class="band-inner">
     <h2>Have a project in mind?</h2>
-    <a href="contact.html" class="btn">Get in touch</a>
+    <a href="#contact" class="btn">Get in touch</a>
   </div>
+</section>
+
+<section class="contact-grid" id="contact">
+  <div class="contact-info">
+    <h3>Say hello</h3>
+    <div class="item">
+      <small>Phone</small>
+      <a href="tel:+12135135990">213.513.5990</a>
+    </div>
+  </div>
+
+  <form class="contact-form" action="https://formspree.io/f/xaeyjerq" method="POST">
+    <div class="field">
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="field">
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="field">
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" required></textarea>
+    </div>
+    <input type="hidden" name="_subject" value="New message from isadorefilms.com">
+    <button type="submit">Send</button>
+    <p class="form-note">We'll get back to you shortly.</p>
+  </form>
 </section>
 
 <footer>
