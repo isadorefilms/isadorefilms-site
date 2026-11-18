@@ -133,6 +133,8 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
 
 /* ---------- About ---------- */
 
+/* The block centers on the page; the text inside it reads from a single
+   left edge, so the kicker and the paragraph share one margin. */
 .about{
   padding:7rem 6vw 4.5rem;
   background:var(--paper);
@@ -140,19 +142,35 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
 }
 
 .about .kicker{
+  text-align:center;
+  margin:0 0 2rem;
   font-size:.78rem;
   letter-spacing:.22em;
   text-transform:uppercase;
   color:#8a8371;
-  margin-bottom:2rem;
 }
 
 .about .lede{
   max-width:58ch;
-  margin:0;
+  margin:0 auto;
   font-size:1.12rem;
   line-height:1.75;
   color:#2b2f38;
+}
+
+/* Opening words set as the wordmark. Slightly under 1em because uppercase
+   reads larger than lowercase at the same size. */
+.about .lede .mark{
+  font-weight:800;
+  font-size:.94em;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+
+.about .lede .mark b{
+  font-weight:800;
+  color:var(--gold);
 }
 
 /* ---------- Philosophy ---------- */
