@@ -44,12 +44,19 @@ a{color:inherit; text-decoration:none;}
   padding:2rem 6vw;
   display:flex;
   align-items:flex-start;
-  justify-content:space-between;
+  justify-content:flex-start;
 }
 
 .site-header.is-light{
   position:relative;
   background:var(--ink);
+}
+
+/* Nav on top, wordmark beneath it, both flush left */
+.brand{
+  display:flex;
+  flex-direction:column;
+  gap:1.15rem;
 }
 
 .logo{
@@ -61,6 +68,7 @@ a{color:inherit; text-decoration:none;}
   letter-spacing:-.02em;
   text-transform:uppercase;
   color:var(--paper);
+  text-shadow:0 1px 3px rgba(0,0,0,.55);
 }
 
 .logo .word b{
@@ -81,6 +89,7 @@ nav.primary a{
   color:var(--paper);
   opacity:.85;
   transition:opacity .2s ease;
+  text-shadow:0 1px 3px rgba(0,0,0,.55);
 }
 
 nav.primary a:hover, nav.primary a.active{ opacity:1; }
@@ -99,11 +108,13 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
   isolation:isolate;
 }
 
+/* Light scrim at the very top only, so the nav and wordmark stay legible.
+   The rest of the photo is left alone now that no copy sits on it. */
 .hero::before{
   content:"";
   position:absolute; inset:0;
   background:
-    linear-gradient(180deg, rgba(18,21,26,.28) 0%, rgba(18,21,26,.10) 40%, rgba(18,21,26,.72) 100%);
+    linear-gradient(180deg, rgba(18,21,26,.25) 0%, rgba(18,21,26,.08) 28%, rgba(18,21,26,0) 55%, rgba(18,21,26,.12) 100%);
   z-index:-1;
 }
 
@@ -120,87 +131,34 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
   margin-bottom:1.4rem;
 }
 
-/* Hero wordmark — same lockup as the header logo, at hero scale */
-.hero-logo{
-  font-family:var(--sans);
-  font-weight:800;
-  font-size:clamp(2.4rem, 6vw, 4.6rem);
-  letter-spacing:-.02em;
-  line-height:1.05;
+/* ---------- About ---------- */
+
+.about{
+  padding:7rem 6vw 4.5rem;
+  background:var(--paper);
+  text-align:left;
+}
+
+.about .kicker{
+  font-size:.78rem;
+  letter-spacing:.22em;
   text-transform:uppercase;
-  color:var(--paper);
-  opacity:.8;
-  text-shadow:0 2px 4px rgba(0,0,0,.85), 0 6px 24px rgba(0,0,0,.7);
+  color:#8a8371;
+  margin-bottom:2rem;
 }
 
-.hero-logo b{
-  font-weight:800;
-  color:var(--gold);
-}
-
-/* Logo + location stacked at the top of the page */
-.brand{
-  display:flex;
-  flex-direction:column;
-}
-
-.site-header .eyebrow{
-  margin-top:.55rem;
-  margin-bottom:0;
-}
-
-.hero h1{
-  font-family:var(--serif);
-  font-weight:400;
-  font-size:clamp(1.2rem, 3vw, 2.3rem);
-  line-height:1.05;
-  opacity:.8;
-  text-shadow:0 2px 4px rgba(0,0,0,.85), 0 6px 24px rgba(0,0,0,.7);
-}
-
-.hero h1 .accent{
-  color:var(--gold);
-}
-
-.hero .sub{
-  margin-top:1.6rem;
-  font-size:1.05rem;
-  max-width:36ch;
-  color:rgba(246,242,234,.85);
-}
-
-.scroll-cue{
-  position:absolute;
-  bottom:2.4rem; left:6vw;
-  height:42px;
-  display:flex;
-  align-items:flex-start;
-}
-
-.scroll-line{
-  display:block;
-  width:1px;
-  height:100%;
-  background:linear-gradient(to bottom, var(--gold), rgba(246,242,234,0));
-  transform-origin:top;
-  animation:scrollDraw 2.4s ease-in-out infinite;
-}
-
-@keyframes scrollDraw{
-  0%{ transform:scaleY(0); opacity:0; }
-  35%{ transform:scaleY(1); opacity:1; }
-  75%{ transform:scaleY(1); opacity:.4; }
-  100%{ transform:scaleY(0); opacity:0; }
-}
-
-@media (prefers-reduced-motion: reduce){
-  .scroll-line{ animation:none; opacity:.6; transform:scaleY(1); }
+.about .lede{
+  max-width:58ch;
+  margin:0;
+  font-size:1.12rem;
+  line-height:1.75;
+  color:#2b2f38;
 }
 
 /* ---------- Philosophy ---------- */
 
 .philosophy{
-  padding:7rem 6vw;
+  padding:2.5rem 6vw 7rem;
   background:var(--paper);
 }
 
@@ -243,7 +201,7 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
 
 .tenet b{ font-weight:600; }
 
-/* ---------- Clients ---------- */
+/* ---------- Clients (dormant — kept for easy restore) ---------- */
 
 .clients{
   padding:1rem 6vw 6rem;
@@ -259,8 +217,6 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
   text-align:center;
 }
 
-/* Flex rather than grid so a leftover row centers instead of
-   hanging off to the left when the logo count changes. */
 .client-grid{
   list-style:none;
   display:flex;
@@ -310,8 +266,6 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
 
 .band{
   position:relative;
-  /* Box takes the photo's own 1161x871 ratio, so "cover" fills edge to edge
-     without cropping and without letterbox bars — full width, whole image. */
   aspect-ratio:1161 / 871;
   width:100%;
   min-height:340px;
@@ -328,9 +282,87 @@ nav.primary a.active{ border-bottom:1px solid var(--gold); padding-bottom:4px; }
 .band::before{
   content:"";
   position:absolute; inset:0;
-  background:rgba(15,17,22,.6);
+  background:rgba(15,17,22,.08);
   z-index:-1;
 }
+
+/* ---------- Contact form over the skyline ---------- */
+
+/* No aspect-ratio here. With a fixed ratio the box computes short on
+   narrow screens and centered flex content spills out of BOTH ends,
+   which pushed the form up into the section above. Content plus padding
+   sets the height instead, with min-height only as a floor so the photo
+   still reads generously on a wide screen. */
+.contact-band{
+  aspect-ratio:auto;
+  height:auto;
+  min-height:min(86vh, 820px);
+  padding:6rem 0;
+}
+
+/* The sunset band behind the form peaks around 226 luminance, so it needs
+   real cover for the labels to hold. .60 lands white text near 5.4:1. */
+.contact-band::before{ background:rgba(15,17,22,.6); }
+
+/* Block sits centered on the photo, but everything inside it reads
+   from a single left edge so the labels sit above their fields. */
+.contact-band .contact-grid{ padding:0 6vw; margin:0 auto; text-align:left; }
+
+.contact-band .contact-info{ text-align:left; }
+
+/* Secondary to the form: small, quiet, sitting under it. */
+.contact-band .contact-info{ margin-top:-.5rem; }
+
+.contact-band .contact-info .item a{
+  color:rgba(246,242,234,.6);
+  font-size:.82rem;
+  letter-spacing:.04em;
+  transition:color .2s ease;
+}
+
+.contact-band .contact-info .item a:hover{ color:var(--gold); }
+
+/* U+FE0E after the glyph forces the monochrome text form, so it picks up
+   the link colour instead of rendering as a full-colour emoji. */
+.contact-band .ico{ font-size:1em; margin-right:.45rem; }
+
+.contact-band form.contact-form label{ color:rgba(246,242,234,.62); }
+
+.contact-band form.contact-form input,
+.contact-band form.contact-form textarea{
+  border-bottom-color:rgba(246,242,234,.32);
+  color:var(--paper);
+}
+
+.contact-band form.contact-form input::placeholder,
+.contact-band form.contact-form textarea::placeholder{
+  color:rgba(246,242,234,.4);
+}
+
+.contact-band form.contact-form input:focus,
+.contact-band form.contact-form textarea:focus{
+  border-bottom-color:var(--gold);
+}
+
+/* Stop Chrome's autofill from painting the fields white on the dark photo. */
+.contact-band form.contact-form input:-webkit-autofill,
+.contact-band form.contact-form input:-webkit-autofill:focus{
+  -webkit-text-fill-color:var(--paper);
+  transition:background-color 600000s 0s, color 600000s 0s;
+}
+
+.contact-band form.contact-form button{
+  background:transparent;
+  border:1px solid var(--gold);
+  color:var(--paper);
+}
+
+.contact-band form.contact-form button:hover{
+  background:var(--gold);
+  color:var(--ink);
+}
+
+.contact-band .form-note{ color:rgba(246,242,234,.55); }
 
 .band-inner{
   padding:0 6vw;
@@ -401,7 +433,7 @@ footer a:hover{ color:var(--gold); }
 
 .social a:hover svg{ fill:var(--gold); }
 
-/* ---------- Contact page ---------- */
+/* ---------- Contact ---------- */
 
 .page-head{
   background:var(--ink);
@@ -418,18 +450,19 @@ footer a:hover{ color:var(--gold); }
 }
 
 .contact-grid{
-  max-width:1100px;
+  max-width:640px;
   margin:0 auto;
   padding:5rem 6vw 7rem;
-  display:grid;
-  grid-template-columns:1fr 1.3fr;
-  gap:4rem;
+  display:flex;
+  flex-direction:column;
+  gap:3rem;
 }
+
+.contact-info{ text-align:center; }
 
 .contact-info h3{
   font-family:var(--serif);
   font-weight:500;
-  font-size:1.1rem;
   margin-bottom:1.2rem;
   color:#8a8371;
   text-transform:uppercase;
@@ -438,12 +471,22 @@ footer a:hover{ color:var(--gold); }
 }
 
 .contact-info .item{
-  margin-bottom:2rem;
+  margin-bottom:0;
 }
 
 .contact-info .item a, .contact-info .item span{
-  font-family:var(--serif);
-  font-size:1.4rem;
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:1.25rem;
+  letter-spacing:-.01em;
+  font-variant-numeric:lining-nums tabular-nums;
+}
+
+.ico{
+  display:inline-block;
+  margin-right:.55rem;
+  font-size:.82em;
+  transform:translateY(-1px);
 }
 
 .contact-info .item small{
@@ -516,8 +559,11 @@ form.contact-form button:hover{
 
 @media (max-width: 760px){
   .tenets{ grid-template-columns:1fr; gap:2.4rem; }
-  .contact-grid{ grid-template-columns:1fr; gap:3rem; padding-top:3.5rem; }
+  .contact-grid{ gap:2.4rem; }
+  .contact-band{ min-height:0; padding:4rem 0; }
   nav.primary ul{ gap:1.3rem; }
   .site-header{ padding:1.4rem 6vw; }
+  .brand{ gap:.9rem; }
+  .about{ padding:4.5rem 6vw 3rem; }
   .page-head{ padding-top:8rem; }
 }
